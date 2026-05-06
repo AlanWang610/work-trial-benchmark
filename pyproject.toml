@@ -1,0 +1,44 @@
+[project]
+name = "work-trial-benchmark"
+version = "0.1.0"
+description = "Local MemoryAgentBench harness — Approach 1 (top-k + Token Company extractive compression)"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=3.0.0",
+    "huggingface-hub>=0.26.0",
+    "openai>=1.55.0",
+    "requests>=2.32.0",
+    "tiktoken>=0.8.0",
+    "numpy>=2.0.0",
+    "pyarrow>=18.0.0",
+    "duckdb>=1.1.0",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "python-dotenv>=1.0.1",
+    "tenacity>=9.0.0",
+    "tqdm>=4.66.0",
+    "nebula-sdk>=1.3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "ruff>=0.7.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/harness"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src/harness" = "harness"
